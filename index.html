@@ -1,17 +1,236 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <title>База Субподряд</title><link rel="stylesheet" href="style.css">
-прпрпрп
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>База Субподряд — Прямые заказы</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f6f8;
+      color: #222;
+    }
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 30px;
+      background: #fff;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+    header img {
+      height: 60px;
+      border-radius: 8px;
+    }
+    nav a {
+      text-decoration: none;
+      font-weight: bold;
+      color: #E30611;
+      font-size: 15px;
+      margin-left: 20px;
+    }
+    .hero {
+      text-align: center;
+      padding: 40px 20px;
+    }
+    .hero h1 {
+      font-size: 24px;
+      margin-bottom: 10px;
+      color: #3C3C3C;
+    }
+    .hero p {
+      font-size: 16px;
+      color: #666;
+      margin-bottom: 30px;
+    }
+    .search-box {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .search-box input {
+      width: 300px;
+      padding: 12px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    .section {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 20px 50px;
+    }
+    .cta {
+      text-align: center;
+      margin: 40px auto;
+    }
+    .cta h2 {
+      font-size: 20px;
+      color: #3C3C3C;
+    }
+    .cta a {
+      display: inline-block;
+      background: #E30611;
+      color: white;
+      padding: 12px 24px;
+      font-size: 16px;
+      border-radius: 6px;
+      margin-top: 12px;
+      text-decoration: none;
+    }
+    .card {
+      background: #fff;
+      border-radius: 6px;
+      padding: 20px 30px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 40px;
+      margin-bottom: 30px;
+      border-left: 4px solid #3C3C3C;
+    }
+    .left, .right {
+      display: flex;
+      flex-direction: column;
+    }
+    .left { flex: 1; }
+    .right { text-align: right; min-width: 220px; }
+    .badge {
+      display: inline-block;
+      background-color: #3C3C3C;
+      color: #fff;
+      font-size: 12px;
+      padding: 6px 14px;
+      border-radius: 14px;
+      font-weight: bold;
+      letter-spacing: 0.5px;
+      margin-bottom: 10px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    }
+    .badge-region {
+      background-color: #e6f0ff;
+      color: #004085;
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-size: 14px;
+      display: inline-block;
+      margin: 6px 0;
+    }
+    .slogan {
+      font-size: 12px;
+      color: #555;
+      font-style: italic;
+      margin-bottom: 16px;
+    }
+    .number {
+      font-size: 18px;
+      font-weight: bold;
+      color: #3C3C3C;
+      text-decoration: none;
+      margin-bottom: 6px;
+    }
+    .status {
+      font-size: 14px;
+      color: #3C3C3C;
+      font-weight: 500;
+      margin-bottom: 14px;
+    }
+    .label {
+      font-size: 13px;
+      color: #888;
+      margin-bottom: 2px;
+    }
+    .value {
+      font-size: 15px;
+      margin-bottom: 12px;
+      color: #222;
+    }
+    .price-badge {
+      display: inline-block;
+      font-weight: 600;
+      font-size: 16px;
+      padding: 6px 14px;
+      border-radius: 16px;
+      text-decoration: none;
+      transition: 0.2s ease;
+      background-color: #eaf8ee;
+      color: #28A745;
+      border: 1px solid #28A745;
+    }
+    footer {
+      background: #f9f9f9;
+      padding: 30px 20px;
+      text-align: center;
+      font-size: 14px;
+      color: #444;
+      border-top: 1px solid #ddd;
+    }
+    footer a {
+      margin: 0 12px;
+      text-decoration: none;
+      color: #E30611;
+    }
+  </style>
 </head>
 <body>
-  <h1>Платформа прямых заказов в строительстве</h1>
-  <p>Скоро здесь будет полноценный сайт!</p>
-  <ul>
-    <li><a href="order.html">📋 Разместить заказ</a></li>
-    <li><a href="register-executor.html">🧱 Стать исполнителем</a></li>
-    <li><a href="order-03381.html">🔍 Пример заказа</a></li>
-  </ul>
+
+  <header>
+    <img alt="База Субподряд логотип" src="brand-logo-v2.png" />
+    <nav>
+      <a href="order.html">📋 Разместить заказ</a>
+      <a href="register-executor.html">🧱 Стать исполнителем</a>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <h1>Платформа прямых строительных заказов</h1>
+    <p>Найдите надёжных подрядчиков или станьте исполнителем. Без посредников. Без комиссии.</p>
+  </div>
+
+  <div class="search-box">
+    <input type="text" placeholder="Поиск по региону или номеру заказа (неактивен)">
+  </div>
+
+  <div class="section">
+    <div class="card">
+      <div class="left">
+        <div class="badge">ГЕНПОДРЯД</div>
+        <div class="slogan">Прямые контакты без посредников</div>
+        <a class="number" href="order-03381.html">№ 0338100005425000029</a>
+        <div class="badge-region">📍 Москва</div>
+        <div class="status">Приём заявок открыт</div>
+        <div><div class="label">Объект</div><div class="value">Капремонт фасада жилого дома</div></div>
+        <div><div class="label">Заказчик</div><div class="value">Мосжилинвест</div></div>
+      </div>
+      <div class="right">
+        <a class="price-badge" href="#">500 000 ₽</a>
+        <div class="date-block">
+          <div>Размещено: <strong>18.04.2025</strong></div>
+          <div>Обновлено: <strong>19.04.2025</strong></div>
+          <div>Окончание подачи заявок: <strong>25.04.2025</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cta">
+    <h2>Вы исполнитель? Хотите получать заказы напрямую?</h2>
+    <a href="register-executor.html">🧱 Стать исполнителем</a>
+  </div>
+
+  <footer>
+    <div style="margin-bottom: 10px;">
+      © 2025 База Субподряд — платформа для прямых заказов в строительстве
+    </div>
+    <div>
+      <a href="/baza/">🏠 Главная</a>
+      <a href="/baza/order.html">📝 Разместить заказ</a>
+      <a href="/baza/register-executor.html">🧱 Стать исполнителем</a>
+      <a href="mailto:Baza.info24@yandex.com">📬 Связаться</a>
+      <a href="https://t.me/your_channel" target="_blank">📱 Telegram</a>
+    </div>
+  </footer>
+
 </body>
 </html>
