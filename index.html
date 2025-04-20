@@ -191,6 +191,7 @@
   <div class="search-box">
     <input type="text" placeholder="Поиск по региону или номеру заказа (неактивен)">
   </div>
+<div id="results"></div>
 
   <div class="section">
     <div class="card">
@@ -231,6 +232,98 @@
       <a href="https://t.me/your_channel" target="_blank">📱 Telegram</a>
     </div>
   </footer>
+<script>
+// Пример данных заказов
+const orders = [
+  {
+    id: "0338100005425000029",
+    region: "Москва",
+    object: "Капремонт фасада жилого дома",
+    customer: "Мосжилинвест",
+    price: 500000,
+    datePosted: "2025-04-18",
+    dateUpdated: "2025-04-19",
+    deadline: "2025-04-25",
+    type: "бригада"
+  },
+  {
+    id: "0338100005425000042",
+    region: "Санкт-Петербург",
+    object: "Монтаж кровли",
+    customer: "Горстрой",
+    price: 12000000,
+    datePosted: "2025-04-15",
+    dateUpdated: "2025-04-17",
+    deadline: "2025-04-23",
+    type: "субподряд"
+  }
+];
+
+// Функция фильтрации
+function filterOrders(query) {
+  const results = document.getElementById("results");
+  results.innerHTML = ""; // очищаем старый вывод
+
+  const q = query.toLowerCase();
+  const minMatch = q.match(/от (\d{1,3}(?:\s?\d{3})+)/i);
+  const maxMatch = q.match(/до (\d{1,3}(?:\s?\d{3})+)/i);
+
+  const minPrice = minMatch ? parseInt(minMatch[1].replace(/\s/g, "")) : null;
+  const maxPrice = maxMatch ? parseInt(maxMatch[1].replace(/\s/g, "")) : null;
+
+  const filtered = orders.filter(order => {
+    const matchText =
+      order.id.toLowerCase().includes(q) ||
+      order.region.toLowerCase().includes(q) ||
+      order.object.toLowerCase().includes(q) ||
+      order.type.toLowerCase().includes(q);
+
+    const matchPrice =
+      (!minPrice || order.price >= minPrice) &&
+      (!maxPrice || order.price <= maxPrice);
+
+    return matchText && matchPrice;
+  });
+
+  if (filtered.length === 0) {
+    results.innerHTML = "<p>Ничего не найдено.</p>";
+    return;
+  }
+
+  filtered.forEach(order => {
+    const el = document.createElement("div");
+    el.className = "card";
+    el.innerHTML = `
+      <div class="left">
+        <div class="badge">${order.type.toUpperCase()}</div>
+        <a class="number" href="#">№ ${order.id}</a>
+        <div class="badge-region">📍 ${order.region}</div>
+        <div class="value">${order.object}</div>
+        <div class="status">💰 ${order.price.toLocaleString("ru-RU")} ₽</div>
+      </div>
+      <div class="right">
+        <div class="date-block">
+          <div>Размещено: <strong>${order.datePosted}</strong></div>
+          <div>Обновлено: <strong>${order.dateUpdated}</strong></div>
+        </div>
+      </div>
+    `;
+    results.appendChild(el);
+  });
+}
+
+// Привязываем к строке поиска
+document.addEventListener("DOMContentLoaded", () => {
+  const input = document.querySelector(".search-box input");
+  if (input) {
+    input.addEventListener("input", () => {
+      const val = input.value.trim();
+      if (val.length >= 2) filterOrders(val);
+      else document.getElementById("results").innerHTML = "";
+    });
+  }
+});
+</script>
 
 </body>
 </html>
