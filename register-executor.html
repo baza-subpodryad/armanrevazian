@@ -1,1 +1,103 @@
-<h1>Регистрация исполнителя</h1>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Регистрация исполнителя</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f5f5f5;
+      padding: 40px 20px;
+      max-width: 800px;
+      margin: auto;
+      color: #222;
+    }
+    h1 {
+      font-size: 24px;
+      color: #E30611;
+      margin-bottom: 24px;
+    }
+    .form-group {
+      margin-bottom: 18px;
+    }
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 6px;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    input[type="file"] {
+      padding: 6px;
+    }
+    textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+    .submit-btn {
+      background-color: #E30611;
+      color: white;
+      padding: 12px 24px;
+      font-size: 16px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .submit-btn:hover {
+      background-color: #c1000f;
+    }
+    .note {
+      font-size: 13px;
+      color: #666;
+      margin-top: -12px;
+      margin-bottom: 12px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Регистрация исполнителя</h1>
+
+  <form action="#" method="POST" enctype="multipart/form-data">
+    <div class="form-group">
+      <label>📛 Название компании / ФИО</label>
+      <input type="text" name="company" required>
+    </div>
+
+    <div class="form-group">
+      <label>🆔 ИНН</label>
+      <input type="text" name="inn" required>
+    </div>
+
+    <div class="form-group">
+      <label>📄 Карточка предприятия (PDF, DOCX)</label>
+      <input type="file" name="company_card" accept=".pdf,.doc,.docx">
+    </div>
+
+    <div class="form-group">
+      <label>🖼 Фото выполненных работ</label>
+      <input type="file" name="portfolio[]" multiple accept=".jpg,.jpeg,.png">
+      <div class="note">Можно загрузить несколько изображений</div>
+    </div>
+
+    <div class="form-group">
+      <label>📞 Контактный номер</label>
+      <input type="tel" name="phone" placeholder="+7 900 000 00 00">
+    </div>
+
+    <div class="form-group">
+      <label>✍️ Расскажите о себе</label>
+      <textarea name="about" placeholder="Краткое описание опыта, специализации, регионов работы..."></textarea>
+    </div>
+
+    <button type="submit" class="submit-btn" onclick="alert('Заявка принята. Мы свяжемся с вами после проверки.'); return false;">📤 Отправить заявку</button>
+  </form>
+
+</body>
+</html>
