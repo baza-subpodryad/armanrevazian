@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -33,61 +34,20 @@
 
   <div id="results"></div>
 
-  <div class="section">
-    <div class="card">
-      <div class="left">
-        <div class="badge">ГЕНПОДРЯД</div>
-        <div class="slogan">Прямые контакты без посредников</div>
-        <a class="number" href="order-03381.html">№ 0338100005425000029</a>
-        <div class="badge-region">Москва</div>
-        <div class="status">Приём заявок открыт</div>
-        <div><div class="label">Объект</div><div class="value">Капремонт фасада жилого дома</div></div>
-        <div><div class="label">Заказчик</div><div class="value">Мосжилинвест</div></div>
-      </div>
-      <div class="right">
-        <a class="price-badge" href="#">500 000 ₽</a>
-        <div class="date-block">
-          <div>Размещено: <strong>18.04.2025</strong></div>
-          <div>Обновлено: <strong>19.04.2025</strong></div>
-          <div>Окончание подачи заявок: <strong>25.04.2025</strong></div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="cta">
-    <h2>Вы исполнитель? Хотите получать заказы напрямую?</h2>
-    <a href="register-executor.html">Стать исполнителем</a>
-  </div>
-
   <footer>
     <div style="margin-bottom: 10px;">
       © 2025 База Субподряд — платформа для прямых заказов в строительстве
     </div>
     <div>
-      <a href="/baza/">Главная</a>
-      <a href="/baza/order.html">Разместить заказ</a>
-      <a href="/baza/register-executor.html">Стать исполнителем</a>
+      <a href="index.html">Главная</a>
+      <a href="order.html">Разместить заказ</a>
+      <a href="register-executor.html">Стать исполнителем</a>
       <a href="mailto:Baza.info24@yandex.com">Связаться</a>
       <a href="https://t.me/your_channel" target="_blank">Telegram</a>
     </div>
   </footer>
 
-<script>
-let orders = [];
+</body>
+</html>
 
-function renderResults(filtered) {
-  const results = document.getElementById("results");
-  results.innerHTML = "";
-
-  if (filtered.length === 0) {
-    results.innerHTML = "<p>Ничего не найдено.</p>";
-    return;
-  }
-
-  filtered.forEach(order => {
-    const el = document.createElement("div");
-    el.className = "card";
-    el.innerHTML = `
-      <div class
 
