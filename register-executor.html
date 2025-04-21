@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Регистрация исполнителя</title>
+  <link rel="stylesheet" href="style.css">
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
@@ -58,6 +59,20 @@
       margin-top: -12px;
       margin-bottom: 12px;
     }
+    footer {
+      margin-top: 40px;
+      background: #f9f9f9;
+      padding: 30px 20px;
+      text-align: center;
+      font-size: 14px;
+      color: #444;
+      border-top: 1px solid #ddd;
+    }
+    footer a {
+      margin: 0 12px;
+      text-decoration: none;
+      color: #E30611;
+    }
   </style>
 </head>
 <body>
@@ -66,12 +81,12 @@
 
   <form action="#" method="POST" enctype="multipart/form-data">
     <div class="form-group">
-      <label> Название компании / ФИО</label>
+      <label>Название компании / ФИО</label>
       <input type="text" name="company" required>
     </div>
 
     <div class="form-group">
-      <label> ИНН</label>
+      <label>ИНН</label>
       <input type="text" name="inn" required>
     </div>
 
@@ -81,9 +96,9 @@
     </div>
 
     <div class="form-group">
-      <label> Фото выполненных работ</label>
+      <label>Фото выполненных работ</label>
       <input type="file" name="portfolio[]" multiple accept=".jpg,.jpeg,.png">
-      </br></br><div class="note">Можно загрузить несколько изображений</div>
+      <div class="note">Можно загрузить несколько изображений</div>
     </div>
 
     <div class="form-group">
@@ -98,18 +113,19 @@
 
     <button type="submit" class="submit-btn" onclick="alert('Заявка принята. Мы свяжемся с вами после проверки.'); return false;">📤 Отправить заявку</button>
   </form>
-<footer>
-  <div style="margin-bottom: 10px;">
-    © 2025 База Субподряд — платформа для прямых заказов в строительстве
-  </div>
-  <div>
-    <a href="index.html">Главная</a>
-    <a href="order.html">Разместить заказ</a>
-    <a href="register-executor.html">Стать исполнителем</a>
-    <a href="mailto:Baza.info24@yandex.com">Связаться</a>
-    <a href="https://t.me/your_channel" target="_blank">Telegram</a>
-  </div>
-</footer>
+
+  <footer>
+    <div style="margin-bottom: 10px;">
+      © 2025 База Субподряд — платформа для прямых заказов в строительстве
+    </div>
+    <div>
+      <a href="index.html">Главная</a>
+      <a href="order.html">Разместить заказ</a>
+      <a href="register-executor.html">Стать исполнителем</a>
+      <a href="mailto:Baza.info24@yandex.com">Связаться</a>
+      <a href="https://t.me/your_channel" target="_blank">Telegram</a>
+    </div>
+  </footer>
 
 </body>
 </html>

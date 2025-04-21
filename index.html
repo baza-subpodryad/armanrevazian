@@ -1,33 +1,26 @@
 <!DOCTYPE html>
 <html lang="ru">
-<head><link rel="stylesheet" href="style.css">
-
+<head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>База Субподряд — Прямые заказы</title>
-    
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <header>
-    <img alt="База Субподряд логотип" src="brand-logo-v2.png" />
-    <nav>
-      <div class="main-header">
-  <div class="logo-block">
-    <img class="logo" src="brand-logo-v2.png" alt="Логотип">
-    <div class="site-title">
-      <strong>База_Субподряд</strong><br>
-      <span style="font-weight: normal;">Контакты заказчиков — без посредников</span>
+  <div class="main-header">
+    <div class="logo-block">
+      <img class="logo" src="brand-logo-v2.png" alt="Логотип">
+      <div class="site-title">
+        <strong>База_Субподряд</strong><br>
+        <span style="font-weight: normal;">Контакты заказчиков — без посредников</span>
+      </div>
     </div>
-  </div>
-  <nav class="main-nav">
-    <a href="order.html" class="nav-button">Разместить заказ</a>
-    <a href="register-executor.html" class="nav-button alt">Стать исполнителем</a>
-  </nav>
-</div>
-
+    <nav class="main-nav">
+      <a href="order.html" class="nav-button">Разместить заказ</a>
+      <a href="register-executor.html" class="nav-button alt">Стать исполнителем</a>
     </nav>
-  </header>
+  </div>
 
   <div class="hero">
     <h1>Платформа прямых строительных заказов</h1>
@@ -37,7 +30,8 @@
   <div class="search-box">
     <input type="text" placeholder="Поиск по ключевым словам...">
   </div>
-<div id="results"></div>
+
+  <div id="results"></div>
 
   <div class="section">
     <div class="card">
@@ -63,7 +57,7 @@
 
   <div class="cta">
     <h2>Вы исполнитель? Хотите получать заказы напрямую?</h2>
-    <a href="register-executor.html"> Стать исполнителем</a>
+    <a href="register-executor.html">Стать исполнителем</a>
   </div>
 
   <footer>
@@ -71,13 +65,14 @@
       © 2025 База Субподряд — платформа для прямых заказов в строительстве
     </div>
     <div>
-      <a href="/baza/"> Главная</a>
-      <a href="/baza/order.html"> Разместить заказ</a>
-      <a href="/baza/register-executor.html"> Стать исполнителем</a>
-      <a href="mailto:Baza.info24@yandex.com"> Связаться</a>
-      <a href="https://t.me/your_channel" target="_blank"> Telegram</a>
+      <a href="/baza/">Главная</a>
+      <a href="/baza/order.html">Разместить заказ</a>
+      <a href="/baza/register-executor.html">Стать исполнителем</a>
+      <a href="mailto:Baza.info24@yandex.com">Связаться</a>
+      <a href="https://t.me/your_channel" target="_blank">Telegram</a>
     </div>
   </footer>
+
 <script>
 let orders = [];
 
@@ -94,74 +89,5 @@ function renderResults(filtered) {
     const el = document.createElement("div");
     el.className = "card";
     el.innerHTML = `
-      <div class="left">
-        <div class="badge">${order.type.toUpperCase()}</div>
-        <a class="number" href="#">№ ${order.id}</a>
-        <div class="badge-region">📍 ${order.region}</div>
-        <div class="value">${order.object}</div>
-        <div class="status">💰 ${order.price.toLocaleString("ru-RU")} ₽</div>
-      </div>
-      <div class="right">
-        <div class="date-block">
-          <div>Размещено: <strong>${order.datePosted}</strong></div>
-          <div>Обновлено: <strong>${order.dateUpdated}</strong></div>
-        </div>
-      </div>
-    `;
-    results.appendChild(el);
-  });
-}
+      <div class
 
-function filterOrders(query) {
-  const q = query.toLowerCase();
-  const minMatch = q.match(/от (\d{1,3}(?:\s?\d{3})+)/i);
-  const maxMatch = q.match(/до (\d{1,3}(?:\s?\d{3})+)/i);
-
-  const minPrice = minMatch ? parseInt(minMatch[1].replace(/\s/g, "")) : null;
-  const maxPrice = maxMatch ? parseInt(maxMatch[1].replace(/\s/g, "")) : null;
-
-  const filtered = orders.filter(order => {
-    const matchText =
-      order.id.toLowerCase().includes(q) ||
-      order.region.toLowerCase().includes(q) ||
-      order.object.toLowerCase().includes(q) ||
-      order.type.toLowerCase().includes(q);
-
-    const matchPrice =
-      (!minPrice || order.price >= minPrice) &&
-      (!maxPrice || order.price <= maxPrice);
-
-    return matchText && matchPrice;
-  });
-
-  renderResults(filtered);
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-  const input = document.querySelector(".search-box input");
-  const results = document.createElement("div");
-  results.id = "results";
-  document.body.appendChild(results);
-
-  fetch("orders.json")
-    .then(res => res.json())
-    .then(data => {
-      orders = data;
-
-      if (input) {
-        input.addEventListener("input", () => {
-          const val = input.value.trim();
-          if (val.length >= 2) filterOrders(val);
-          else results.innerHTML = "";
-        });
-      }
-    })
-    .catch(err => {
-      console.error("Ошибка загрузки orders.json:", err);
-      results.innerHTML = "<p>Не удалось загрузить заказы.</p>";
-    });
-});
-</script>
-
-</body>
-</html>
